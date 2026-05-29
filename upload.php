@@ -99,8 +99,8 @@ table img {
 
 <!----建立一個連結來查看上傳後的圖檔---->  
 <?php 
-$sql="SELECT * FROM `photos`";
-$rows=$pdo->query($sql)->fetchAll();
+
+$rows=all('photos');
 ?>
 
 <table>
@@ -119,7 +119,10 @@ $rows=$pdo->query($sql)->fetchAll();
         </td>
         <td><?= $row['name'];?></td>
         <td><?= $row['type'];?></td>
-        <td></td>
+        <td>
+            <button onclick="location.href='edit_photo.php?id=<?= $row['id']; ?>'">編輯</button>
+            <button onclick="location.href='del_photo.php?id=<?= $row['id']; ?>'">刪除</button>
+        </td>
     </tr>
     <?php endforeach; ?>
 </table>
